@@ -1,0 +1,591 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* コンテナ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ヘッダー */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo h1 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    opacity: 0.9;
+}
+
+.nav-menu a:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* メインコンテンツ */
+main {
+    margin-top: 80px;
+}
+
+/* ヒーローセクション */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.feature .icon {
+    font-size: 1.5rem;
+}
+
+.cta-button {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+}
+
+/* セクション共通スタイル */
+section {
+    padding: 80px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+/* 物体検出とは */
+.about {
+    background-color: white;
+}
+
+.explanation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.explanation-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.explanation-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.demo-preview {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #2196f3;
+}
+
+.bbox {
+    position: absolute;
+    border: 3px solid #00ffff;
+    border-radius: 5px;
+    top: 30px;
+    left: 50px;
+    width: 120px;
+    height: 80px;
+}
+
+.bbox-small {
+    width: 60px;
+    height: 40px;
+    top: 120px;
+    left: 180px;
+}
+
+.label {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: #00ffff;
+    color: #333;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.demo-text {
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+/* デモセクション */
+.demo-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.demo-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.camera-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.video-container {
+    position: relative;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#webcam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#outputCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.demo-btn {
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+}
+
+.demo-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+}
+
+.demo-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#stopBtn {
+    background: linear-gradient(45deg, #f44336, #ef5350);
+    box-shadow: 0 4px 15px rgba(244,67,54,0.3);
+}
+
+#stopBtn:hover:not(:disabled) {
+    box-shadow: 0 6px 20px rgba(244,67,54,0.4);
+}
+
+.status {
+    text-align: center;
+    padding: 1rem;
+    background: #e8f5e8;
+    border-radius: 10px;
+    border-left: 4px solid #4caf50;
+}
+
+.info-panel {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.info-panel h3 {
+    color: #495057;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+#detectionInfo {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    min-height: 150px;
+    border: 1px solid #dee2e6;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.stat {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+    border: 1px solid #dee2e6;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.stat span:last-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* 仕組み解説 */
+.how-it-works {
+    background: white;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.step {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.step-number {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.step-content code {
+    background: #f1f3f4;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    display: block;
+    overflow-x: auto;
+    border: 1px solid #e8eaed;
+}
+
+/* 発展的内容 */
+.advanced {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.advanced-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.advanced-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.advanced-card:hover {
+    transform: translateY(-5px);
+}
+
+.advanced-card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.advanced-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advanced-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #666;
+}
+
+.advanced-card li:last-child {
+    border-bottom: none;
+}
+
+.advanced-card strong {
+    color: #007bff;
+}
+
+/* 倫理的考慮事項 */
+.ethics {
+    background: white;
+}
+
+.ethics-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.ethics-item {
+    background: #fff3cd;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ffeaa7;
+    border-left: 4px solid #fdcb6e;
+}
+
+.ethics-item h3 {
+    color: #856404;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.ethics-item p {
+    color: #856404;
+    line-height: 1.6;
+}
+
+/* フッター */
+footer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .feature {
+        justify-content: center;
+    }
+    
+    section h2 {
+        font-size: 2rem;
+    }
+    
+    .explanation {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .advanced-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ethics-content {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        padding: 1rem;
+    }
+    
+    .stats {
+        flex-direction: column;
+    }
+}
+
+/* アニメーション */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.demo-btn:hover:not(:disabled) {
+    animation: pulse 2s infinite;
+}
+
+/* 検出結果のスタイリング */
+.detection-item {
+    background: #e8f5e8;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    border-left: 3px solid #4caf50;
+}
+
+.detection-item strong {
+    color: #2e7d32;
+}
+
+.confidence {
+    color: #666;
+    font-size: 0.9rem;
+}
