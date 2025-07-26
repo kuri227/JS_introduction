@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ブラウザでリアルタイム物体検出！TensorFlow.jsとWebカメラ活用術</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <!-- TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
 </head>
@@ -13,44 +16,63 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>🤖 AI物体検出デモ</h1>
+                <h1>AI物体検出デモ</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="#intro">はじめに</a></li>
                 <li><a href="#demo">デモ</a></li>
                 <li><a href="#how-it-works">仕組み</a></li>
-                <li><a href="#advanced">発展的内容</a></li>
+                <li><a href="#tech-details">技術解説</a></li>
+                <li><a href="#customize">カスタマイズ</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- はじめに -->
         <section id="intro" class="hero">
             <div class="hero-content">
                 <h2>ブラウザでリアルタイム物体検出！</h2>
                 <p>TensorFlow.jsとWebカメラを使って、あなたのブラウザでAIが動く驚きを体験してください</p>
                 <div class="features">
-                    <div class="feature">
-                        <span class="icon">🚀</span>
-                        <span>インストール不要</span>
+                    <div class="feature"><span>インストール不要</span></div>
+                    <div class="feature"><span>リアルタイム処理</span></div>
+                    <div class="feature"><span>プライバシー保護</span></div>
+                </div>
+                <div class="intro-images">
+                    <div class="logo-container">
+                        <img src="images/js-logo.png" alt="JavaScript Logo" class="tech-logo js-logo">
+                        <span class="logo-label">JavaScript</span>
                     </div>
-                    <div class="feature">
-                        <span class="icon">⚡</span>
-                        <span>リアルタイム処理</span>
-                    </div>
-                    <div class="feature">
-                        <span class="icon">🔒</span>
-                        <span>プライバシー保護</span>
+                    <div class="logo-container">
+                        <img src="images/tfjs-logo.png" alt="TensorFlow.js Logo" class="tech-logo tfjs-logo">
+                        <span class="logo-label">TensorFlow.js</span>
+                        <span class="trademark-notice">TensorFlow, the TensorFlow logo and any related marks are trademarks of Google Inc.</span>
                     </div>
                 </div>
-                <button class="cta-button" onclick="document.getElementById('demo').scrollIntoView()">
-                    デモを試す
-                </button>
+                <button class="cta-button" onclick="document.getElementById('demo').scrollIntoView()">デモを試す</button>
+                <div class="external-links">
+                    <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener">JavaScript公式ドキュメント</a>
+                    <a href="https://www.tensorflow.org/js" target="_blank" rel="noopener">TensorFlow.js公式サイト</a>
+                </div>
             </div>
         </section>
 
-        <!-- 物体検出とは -->
+        <section id="about-tf" class="about-tf">
+            <div class="container">
+                <h2>TensorFlowとは？</h2>
+                <p>
+                    TensorFlowはGoogleが開発した、機械学習やディープラーニングのためのオープンソースプラットフォームです。画像認識・音声認識・自然言語処理など、さまざまなAIアプリケーションの開発に利用されています。
+                </p>
+                <h2>TensorFlow.jsとは？</h2>
+                <p>
+                    <strong>TensorFlow.js</strong>は、<b>AIモデルの学習（トレーニング）と推論（予測）をどちらもWebブラウザ上で実行できる</b>唯一の本格的ライブラリです。<br>
+                    これにより、<b>サーバーや専用アプリを使わずに、AIをWebサイト上で直接動かす</b>ことができます。<br>
+                    例えば、ユーザー自身のデータでAIを学習させたり、リアルタイムで画像認識や音声認識を行うことも可能です。<br>
+                    <span class="highlight">「Web上でAIが学習・推論できる」</span>のはTensorFlow.jsならではの大きな特徴です。
+                </p>
+            </div>
+        </section>
+
         <section id="what-is" class="about">
             <div class="container">
                 <h2>物体検出とは？</h2>
@@ -58,15 +80,16 @@
                     <div class="explanation-text">
                         <p>物体検出は、画像や動画の中から特定の物体（人、車、コップなど）の位置を特定し、それが何かを識別する技術です。</p>
                         <p>従来はサーバー側で処理されていましたが、TensorFlow.jsの登場により、ブラウザ上でリアルタイムに実行できるようになりました。</p>
+                        <ul>
+                            <li>JavaScriptはWebブラウザで動作する代表的なプログラミング言語です。</li>
+                            <li>非同期処理やイベント駆動型の開発が得意です。</li>
+                            <li>多くのライブラリやフレームワークが利用可能です。</li>
+                        </ul>
                     </div>
                     <div class="explanation-visual">
                         <div class="demo-preview">
-                            <div class="bbox">
-                                <span class="label">person (95%)</span>
-                            </div>
-                            <div class="bbox bbox-small">
-                                <span class="label">cup (87%)</span>
-                            </div>
+                            <div class="bbox"><span class="label">person (95%)</span></div>
+                            <div class="bbox bbox-small"><span class="label">cup (87%)</span></div>
                             <p class="demo-text">リアルタイム検出イメージ</p>
                         </div>
                     </div>
@@ -74,10 +97,9 @@
             </div>
         </section>
 
-        <!-- デモセクション -->
         <section id="demo" class="demo-section">
             <div class="container">
-                <h2>🎥 リアルタイム物体検出デモ</h2>
+                <h2>リアルタイム物体検出デモ</h2>
                 <div class="demo-container">
                     <div class="camera-section">
                         <div class="video-container">
@@ -89,14 +111,12 @@
                             <button id="stopBtn" class="demo-btn" disabled>停止</button>
                         </div>
                         <div id="status" class="status">
-                            <span id="statusText">「カメラを開始」ボタンをクリックしてください</span>
+                            <span id="statusText"></span>
                         </div>
                     </div>
                     <div class="info-panel">
                         <h3>検出情報</h3>
-                        <div id="detectionInfo">
-                            <p>検出された物体がここに表示されます</p>
-                        </div>
+                        <div id="detectionInfo"><p>検出された物体がここに表示されます</p></div>
                         <div class="stats">
                             <div class="stat">
                                 <span class="stat-label">検出数:</span>
@@ -112,92 +132,131 @@
             </div>
         </section>
 
-        <!-- 仕組み解説 -->
         <section id="how-it-works" class="how-it-works">
             <div class="container">
-                <h2>🔧 仕組み解説</h2>
+                <h2>物体検出の仕組み (4ステップ)</h2>
+                <p class="section-subtitle">このデモがどのように動作しているのか、JavaScriptのコードと共に見ていきましょう。</p>
                 <div class="steps">
                     <div class="step">
-                        <div class="step-number">1</div>
+                        <div class="step-header"><span class="step-number">1</span><h3>モデルの読み込み</h3></div>
                         <div class="step-content">
-                            <h3>TensorFlow.jsの準備</h3>
-                            <p>JavaScriptでAIモデルを動かすためのライブラリを読み込みます</p>
-                            <code>&lt;script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"&gt;&lt;/script&gt;</code>
+                            <p>
+                                まずHTMLでライブラリを読み込みます。次にJavaScript側で<code class="inline-code">cocoSsd.load()</code>を使い、学習済みの物体検出モデルを非同期で初期化します。
+                                <code class="inline-code">await</code>キーワードは、時間のかかるモデルの読み込みが完了するまで次の処理を待つために不可欠です。
+                            </p>
+                            <div class="code-block-header">script.js (loadModel関数)</div>
+                            <code class="code-block">model = await cocoSsd.load();</code>
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-number">2</div>
+                        <div class="step-header"><span class="step-number">2</span><h3>カメラの起動</h3></div>
                         <div class="step-content">
-                            <h3>Webカメラ映像の取得</h3>
-                            <p>getUserMedia()を使ってWebカメラのストリームを取得します</p>
-                            <code>navigator.mediaDevices.getUserMedia({ 'video': true })</code>
+                            <p>
+                                「カメラを開始」ボタンがクリックされると<code class="inline-code">startDetection</code>関数が実行されます。この関数はまず<code class="inline-code">setupWebcam</code>関数を呼び出し、<code class="inline-code">getUserMedia()</code>を使ってWebカメラの映像（ストリーム）を取得します。
+                                取得したストリームはHTMLの<code class="inline-code">&lt;video&gt;</code>要素にセットされ、カメラ映像が画面に表示されます。
+                            </p>
+                            <div class="code-block-header">script.js (setupWebcam関数)</div>
+                            <code class="code-block">const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+video.srcObject = stream;</code>
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-number">3</div>
+                        <div class="step-header"><span class="step-number">3</span><h3>リアルタイム検出ループの開始</h3></div>
                         <div class="step-content">
-                            <h3>COCO-SSDモデルの読み込み</h3>
-                            <p>事前学習済みの物体検出モデルを非同期で読み込みます</p>
-                            <code>model = await cocoSsd.load()</code>
+                            <p>
+                                カメラの準備が完了すると、<code class="inline-code">startDetection</code>関数は次に<code class="inline-code">detectFrame</code>関数を呼び出して検出処理を開始します。<code class="inline-code">detectFrame</code>関数は、内部で<code class="inline-code">requestAnimationFrame</code>を使い、ブラウザの描画タイミングに合わせて自身を繰り返し呼び出すことで、スムーズな検出ループを実現します。
+                            </p>
+                            <div class="code-block-header">script.js (detectFrame関数内)</div>
+                            <code class="code-block">const predictions = await model.detect(video);
+requestAnimationFrame(detectFrame);</code>
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-number">4</div>
+                        <div class="step-header"><span class="step-number">4</span><h3>結果の描画</h3></div>
                         <div class="step-content">
-                            <h3>リアルタイム検出と描画</h3>
-                            <p>フレームごとに物体を検出し、結果をキャンバスに描画します</p>
-                            <code>predictions = await model.detect(video)</code>
+                            <p>
+                                検出ループの中で得られた予測結果<code class="inline-code">predictions</code>には、物体の名前(<code class="inline-code">class</code>)、位置(<code class="inline-code">bbox</code>)、信頼度(<code class="inline-code">score</code>)が含まれています。この情報を元に、<code class="inline-code">&lt;canvas&gt;</code>要素に四角い枠とラベルを描画し、結果を可視化します。
+                            </p>
+                            <div class="code-block-header">script.js (drawPredictions関数)</div>
+                            <code class="code-block">predictions.forEach(prediction => {
+    const [x, y, width, height] = prediction.bbox;
+    ctx.strokeRect(x, y, width, height);
+});</code>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 発展的内容 -->
-        <section id="advanced" class="advanced">
+        <section id="tech-details" class="advanced">
             <div class="container">
-                <h2>🚀 発展的な内容</h2>
+                <h2>JavaScript技術解説</h2>
+                <p class="section-subtitle">このデモを支える重要なJavaScriptの技術を紹介します。</p>
                 <div class="advanced-grid">
                     <div class="advanced-card">
-                        <h3>他のTensorFlow.jsモデル</h3>
-                        <ul>
-                            <li><strong>PoseNet</strong>: 姿勢推定</li>
-                            <li><strong>BodyPix</strong>: セグメンテーション</li>
-                            <li><strong>Hand Pose</strong>: 手の検出</li>
-                        </ul>
+                        <h3>async / await</h3>
+                        <p>モデルの読み込みやカメラの起動など、時間のかかる処理（非同期処理）を、あたかも順番に実行されるかのように直感的に書くための構文です。Promiseベースの処理をよりシンプルに記述できます。</p>
                     </div>
                     <div class="advanced-card">
-                        <h3>パフォーマンス最適化</h3>
-                        <ul>
-                            <li>WebGLバックエンドの利用</li>
-                            <li>モデルの量子化</li>
-                            <li>バッチ処理の最適化</li>
-                        </ul>
+                        <h3>getUserMedia API</h3>
+                        <p>ユーザーのカメラやマイクといったメディアデバイスにアクセスするためのWeb APIです。ユーザーのプライバシー保護のため、使用前には必ず許可を求めるダイアログが表示されます。</p>
                     </div>
                     <div class="advanced-card">
-                        <h3>カスタムモデル</h3>
-                        <ul>
-                            <li>独自データでの学習</li>
-                            <li>転移学習の活用</li>
-                            <li>モデルの変換と最適化</li>
-                        </ul>
+                        <h3>requestAnimationFrame</h3>
+                        <p>ブラウザに「次の再描画のタイミングでこの関数を実行してほしい」とお願いするメソッドです。<code class="inline-code">setInterval</code>よりもスムーズで効率的なアニメーションやループ処理を実現するのに適しています。</p>
                     </div>
                     <div class="advanced-card">
-                        <h3>実装のポイント</h3>
-                        <ul>
-                            <li>非同期処理の理解</li>
-                            <li>Canvas API の活用</li>
-                            <li>エラーハンドリング</li>
-                        </ul>
+                        <h3>Canvas API</h3>
+                        <p>HTMLの<code class="inline-code">&lt;canvas&gt;</code>要素に、JavaScriptを使って図形や画像、テキストを動的に描画するためのAPIです。今回は検出結果のバウンディングボックスやラベルの描画に利用しています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="customize" class="how-it-works customize-section">
+            <div class="container">
+                <h2>コードをカスタマイズしてみよう！</h2>
+                <p class="section-subtitle">JavaScriptを少し書き換えるだけで、検出の挙動を簡単に変更できます。ぜひ挑戦してみてください。</p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-content">
+                            <h3>挑戦1: 検出の信頼度を変える</h3>
+                            <p>JavaScriptファイルの上部にある<code class="inline-code">SCORE_THRESHOLD</code>の値を変更してみましょう。例えば<code class="inline-code">0.7</code>にすると、70%以上の信頼度がある物体しか表示されなくなります。</p>
+                            <div class="code-block-header">JavaScript (変更前)</div>
+                            <code class="code-block">const SCORE_THRESHOLD = 0.5;</code>
+                            <div class="code-block-header">JavaScript (変更後)</div>
+                            <code class="code-block">const SCORE_THRESHOLD = 0.7;</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <h3>挑戦2: 枠線の色や太さを変える</h3>
+                            <p><code class="inline-code">drawPredictions</code>関数の中にある<code class="inline-code">ctx.strokeStyle</code>（色）や<code class="inline-code">ctx.lineWidth</code>（太さ）の値を変更してみましょう。'red'や'#ff00ff'など好きな色を試せます。</p>
+                            <div class="code-block-header">JavaScript (変更前)</div>
+                            <code class="code-block">ctx.strokeStyle = '#0ea5e9';
+ctx.lineWidth = 3;</code>
+                            <div class="code-block-header">JavaScript (変更後)</div>
+                            <code class="code-block">ctx.strokeStyle = 'red';
+ctx.lineWidth = 5;</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-content">
+                            <h3>挑戦3: 特定の物体だけ検出する</h3>
+                            <p><code class="inline-code">drawPredictions</code>関数にif文を追加して、<code class="inline-code">prediction.class</code>が特定のもの（例: 'person'）の場合だけ描画するようにしてみましょう。</p>
+                            <div class="code-block-header">JavaScript (追加コード)</div>
+                            <code class="code-block">if (prediction.class === 'person') {
+    // この中に描画処理を入れる
+}</code>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 倫理的考慮事項 -->
         <section id="ethics" class="ethics">
             <div class="container">
-                <h2>⚠️ 倫理的考慮事項</h2>
+                <h2>配慮するべき事項</h2>
                 <div class="ethics-content">
                     <div class="ethics-item">
                         <h3>プライバシー保護</h3>
@@ -219,6 +278,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 AI物体検出デモ. TensorFlow.jsとWebカメラを活用したリアルタイム検出システム</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">制作時間：6時間</p>
         </div>
     </footer>
 

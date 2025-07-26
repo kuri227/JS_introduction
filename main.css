@@ -1,33 +1,120 @@
-/* リセットCSS */
+/* ========================================
+   リセットCSS & 基本設定
+======================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
-/* コンテナ */
+body {
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background-color: #f8f9fa;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ========================================
+   フォント階層の定義
+======================================== */
+
+/* メインタイトル・ロゴ用 */
+.logo h1, .hero h2 {
+    font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+/* セクションタイトル */
+h2 {
+    font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: #0f172a;
+}
+
+/* サブタイトル */
+h3, h4, h5, h6 {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #1e293b;
+}
+
+/* 本文 */
+p, li, .section-subtitle {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.75;
+    color: #334155;
+}
+
+/* コードフォント */
+code, pre, .inline-code, .code-block {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'ss01' 1;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* ナビゲーション */
+.nav-menu a {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+/* ボタン */
+button, .cta-button, .demo-btn {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ステータス・統計情報 */
+.status, .stats, .stat-label {
+    font-family: 'JetBrains Mono', 'Inter', 'Noto Sans JP', monospace;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* ========================================
+   コンテナ
+======================================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ヘッダー */
+/* ========================================
+   ヘッダー
+======================================== */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 nav {
@@ -39,503 +126,855 @@ nav {
 
 .logo h1 {
     color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .nav-menu a {
     text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    opacity: 0.9;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #06b6d4, #0ea5e9);
+    transition: width 0.3s ease;
 }
 
 .nav-menu a:hover {
-    opacity: 1;
-    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    color: white;
+    transform: translateY(-1px);
 }
 
-/* メインコンテンツ */
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* ========================================
+   メインコンテンツ
+======================================== */
 main {
     margin-top: 80px;
 }
 
-/* ヒーローセクション */
+/* ========================================
+   ヒーローセクション
+======================================== */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e40af 30%, #3b82f6 70%, #0ea5e9 100%);
     color: white;
-    padding: 100px 0;
+    padding: 120px 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(59,130,246,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(14,165,233,0.2) 0%, transparent 50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    max-width: 680px;
     margin-left: auto;
     margin-right: auto;
-    opacity: 0.9;
+    font-weight: 400;
+    opacity: 0.95;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
 }
 
 .features {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
     flex-wrap: wrap;
 }
 
 .feature {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     background: rgba(255,255,255,0.1);
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
+    padding: 1rem 2rem;
+    border-radius: 50px;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
 }
 
-.feature .icon {
-    font-size: 1.5rem;
+.feature:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+.feature span {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.95);
+}
+
+.intro-images {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tech-logo {
+    height: 80px;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.tech-logo:hover {
+    transform: translateY(-5px) scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+}
+
+.js-logo {
+    background: #f7df1e;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.tfjs-logo {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.logo-label {
+    font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+}
+
+.trademark-notice {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.3rem;
+    text-align: center;
+    max-width: 200px;
+    line-height: 1.3;
 }
 
 .cta-button {
-    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0891b2 100%);
     color: white;
-    padding: 15px 40px;
+    padding: 18px 45px;
     border: none;
     border-radius: 50px;
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(14,165,233,0.3);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(14,165,233,0.4);
 }
 
-/* セクション共通スタイル */
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.external-links {
+    margin-top: 2rem;
+}
+
+.external-links a {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    color: rgba(255,255,255,0.9);
+    text-decoration: underline;
+    margin-right: 1.5rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.external-links a:hover {
+    color: white;
+    text-decoration-thickness: 2px;
+}
+
+/* ========================================
+   セクション共通スタイル
+======================================== */
 section {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 section h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #333;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 3.5rem;
+    font-weight: 600;
+    position: relative;
 }
 
-/* 物体検出とは */
-.about {
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    font-size: 1.25rem;
+    color: #64748b;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+p, li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #475569;
+}
+
+/* ========================================
+   物体検出とは / TensorFlowとは
+======================================== */
+.about, .about-tf {
     background-color: white;
+}
+
+.about-tf {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.about-tf p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #475569;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight {
+    color: #1e40af;
+    font-weight: 600;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    padding: 2px 8px;
+    border-radius: 6px;
 }
 
 .explanation {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    gap: 5rem;
+    align-items: start;
 }
 
 .explanation-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    color: #475569;
+}
+
+.explanation-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 2rem;
+}
+
+.explanation-text li {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1rem;
-    color: #555;
+    padding-left: 2rem;
+    position: relative;
+    color: #475569;
+}
+
+.explanation-text li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #0ea5e9;
+    font-weight: 600;
 }
 
 .explanation-visual {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 .demo-preview {
+    border: 2px dashed #cbd5e1;
+    padding: 2.5rem;
+    border-radius: 16px;
     position: relative;
-    width: 300px;
-    height: 200px;
-    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid #2196f3;
+    width: 280px;
+    height: 220px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.bbox {
+.demo-preview .bbox {
     position: absolute;
-    border: 3px solid #00ffff;
-    border-radius: 5px;
-    top: 30px;
-    left: 50px;
-    width: 120px;
-    height: 80px;
+    border: 3px solid #0ea5e9;
+    background-color: rgba(14, 165, 233, 0.08);
+    border-radius: 4px;
 }
 
-.bbox-small {
-    width: 60px;
-    height: 40px;
-    top: 120px;
-    left: 180px;
-}
-
-.label {
+.demo-preview .label {
     position: absolute;
-    top: -25px;
+    top: -28px;
+    left: -3px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(14,165,233,0.3);
+}
+
+.demo-preview .bbox:nth-child(1) { 
+    top: 35px; 
+    left: 70px; 
+    width: 130px; 
+    height: 160px; 
+}
+
+.demo-preview .bbox:nth-child(2) { 
+    top: 130px; 
+    left: 20px; 
+    width: 65px; 
+    height: 55px; 
+}
+
+.demo-preview .demo-text {
+    position: absolute;
+    bottom: 15px;
     left: 0;
-    background: #00ffff;
-    color: #333;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: bold;
+    right: 0;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
-.demo-text {
-    position: absolute;
-    bottom: 10px;
-    font-size: 14px;
-    color: #666;
-    font-style: italic;
-}
-
-/* デモセクション */
+/* ========================================
+   デモセクション
+======================================== */
 .demo-section {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    position: relative;
 }
 
 .demo-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    gap: 4rem;
+    align-items: start;
 }
 
 .camera-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    border: 1px solid rgba(226,232,240,0.8);
 }
 
 .video-container {
     position: relative;
-    background: #000;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #1e293b;
+    aspect-ratio: 4/3;
+    margin-bottom: 2rem;
 }
 
-#webcam {
+#webcam, #outputCanvas {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 #outputCanvas {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 .controls {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    margin-bottom: 1.5rem;
 }
 
 .demo-btn {
-    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
     color: white;
+    padding: 12px 30px;
     border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: 12px;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+    box-shadow: 0 4px 15px rgba(30,64,175,0.2);
 }
 
 .demo-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+    box-shadow: 0 8px 25px rgba(30,64,175,0.3);
 }
 
 .demo-btn:disabled {
-    opacity: 0.5;
+    background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%);
     cursor: not-allowed;
-}
-
-#stopBtn {
-    background: linear-gradient(45deg, #f44336, #ef5350);
-    box-shadow: 0 4px 15px rgba(244,67,54,0.3);
-}
-
-#stopBtn:hover:not(:disabled) {
-    box-shadow: 0 6px 20px rgba(244,67,54,0.4);
+    box-shadow: none;
 }
 
 .status {
     text-align: center;
     padding: 1rem;
-    background: #e8f5e8;
-    border-radius: 10px;
-    border-left: 4px solid #4caf50;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+#statusText {
+    color: #475569;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .info-panel {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 10px;
-    border: 1px solid #e9ecef;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    border: 1px solid rgba(226,232,240,0.8);
+    height: fit-content;
 }
 
 .info-panel h3 {
-    color: #495057;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+    font-weight: 600;
 }
 
 #detectionInfo {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    min-height: 150px;
-    border: 1px solid #dee2e6;
+    min-height: 120px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.detection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.detection-item:last-child {
+    border-bottom: none;
+}
+
+.detection-item strong {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.confidence {
+    color: #0ea5e9;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .stats {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
 .stat {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
     text-align: center;
-    flex: 1;
-    border: 1px solid #dee2e6;
+    padding: 1rem;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-radius: 12px;
+    border: 1px solid #93c5fd;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.9rem;
-    color: #6c757d;
+    font-size: 0.85rem;
+    color: #1e40af;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
-.stat span:last-child {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #007bff;
+#detectionCount, #fps {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1e40af;
 }
 
-/* 仕組み解説 */
+/* ========================================
+   仕組み・技術解説セクション
+======================================== */
 .how-it-works {
     background: white;
 }
 
+.customize-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
 .steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .step {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(226,232,240,0.8);
+    transition: all 0.3s ease;
+}
+
+.step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.step-header {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    padding: 2rem 2.5rem;
     display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    border: 1px solid #e9ecef;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .step-number {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-    width: 40px;
-    height: 40px;
+    background: rgba(255,255,255,0.2);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    flex-shrink: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+}
+
+.step-header h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+}
+
+.step-content {
+    padding: 2.5rem;
 }
 
 .step-content h3 {
-    color: #333;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
 }
 
 .step-content p {
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #475569;
 }
 
-.step-content code {
-    background: #f1f3f4;
-    padding: 0.5rem;
-    border-radius: 5px;
-    font-family: 'Courier New', monospace;
+.inline-code {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    color: #0f172a;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid #cbd5e1;
+}
+
+.code-block-header {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: #e2e8f0;
+    padding: 1rem 1.5rem;
     font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    border: 1px solid #475569;
+    border-bottom: none;
+    clear: both;
     display: block;
-    overflow-x: auto;
-    border: 1px solid #e8eaed;
+    min-height: 2.5rem;
+    line-height: 1.5;
 }
 
-/* 発展的内容 */
+.code-block {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    padding: 2rem;
+    border-radius: 0 0 8px 8px;
+    font-size: 1rem;
+    line-height: 2;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px solid #475569;
+    border-top: none;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2.5rem;
+    clear: both;
+    display: block;
+    min-height: 3rem;
+}
+
+/* ========================================
+   技術解説セクション
+======================================== */
 .advanced {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
 }
 
 .advanced-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
 }
 
 .advanced-card {
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(226,232,240,0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.advanced-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #06b6d4);
 }
 
 .advanced-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
 }
 
 .advanced-card h3 {
-    color: #333;
-    margin-bottom: 1rem;
     font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+    font-weight: 600;
 }
 
-.advanced-card ul {
-    list-style: none;
-    padding: 0;
+.advanced-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #475569;
 }
 
-.advanced-card li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f0f0f0;
-    color: #666;
-}
-
-.advanced-card li:last-child {
-    border-bottom: none;
-}
-
-.advanced-card strong {
-    color: #007bff;
-}
-
-/* 倫理的考慮事項 */
+/* ========================================
+   配慮事項セクション
+======================================== */
 .ethics {
-    background: white;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+}
+
+.ethics h2 {
+    color: white;
+}
+
+.ethics h2::after {
+    background: linear-gradient(90deg, #0ea5e9, #06b6d4);
 }
 
 .ethics-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .ethics-item {
-    background: #fff3cd;
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid #ffeaa7;
-    border-left: 4px solid #fdcb6e;
+    background: rgba(255,255,255,0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.ethics-item:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-4px);
 }
 
 .ethics-item h3 {
-    color: #856404;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #e2e8f0;
+    font-weight: 600;
 }
 
 .ethics-item p {
-    color: #856404;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
 }
 
-/* フッター */
+/* ========================================
+   フッター
+======================================== */
 footer {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: rgba(255,255,255,0.8);
+    padding: 3rem 0;
     text-align: center;
-    padding: 2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* レスポンシブデザイン */
+footer p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* ========================================
+   レスポンシブデザイン
+======================================== */
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-    
     .hero-content h2 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
+        font-size: 2.2rem;
     }
     
     .features {
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
     }
     
-    .feature {
-        justify-content: center;
+    .intro-images {
+        gap: 2rem;
     }
     
-    section h2 {
-        font-size: 2rem;
+    .tech-logo {
+        height: 60px;
     }
     
     .explanation {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
     
     .demo-container {
         grid-template-columns: 1fr;
-    }
-    
-    .steps {
-        grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
     .advanced-grid {
@@ -546,46 +985,33 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    nav {
-        padding: 1rem;
+    .nav-menu {
+        gap: 1.5rem;
     }
     
-    .stats {
-        flex-direction: column;
+    .nav-menu a {
+        font-size: 0.9rem;
     }
-}
-
-/* アニメーション */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
+    
+    section {
+        padding: 60px 0;
     }
-    50% {
-        transform: scale(1.05);
+    
+    .container {
+        padding: 0 15px;
     }
-    100% {
-        transform: scale(1);
+    
+    .camera-section {
+        padding: 1.5rem;
     }
-}
-
-.demo-btn:hover:not(:disabled) {
-    animation: pulse 2s infinite;
-}
-
-/* 検出結果のスタイリング */
-.detection-item {
-    background: #e8f5e8;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 5px;
-    border-left: 3px solid #4caf50;
-}
-
-.detection-item strong {
-    color: #2e7d32;
-}
-
-.confidence {
-    color: #666;
-    font-size: 0.9rem;
+    
+    .info-panel {
+        padding: 1.5rem;
+    }
+    
+    .external-links a {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
 }
